@@ -1,0 +1,62 @@
+﻿@model LuminiHire.Models.UniItem
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>View</h1>
+
+<h4>UniItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UNITID" />
+            <div class="form-group">
+                <label asp-for="INSTNM" class="control-label"></label>
+                <input asp-for="INSTNM" class="form-control" />
+                <span asp-validation-for="INSTNM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCT_ASIAN" class="control-label"></label>
+                <input asp-for="PCT_ASIAN" class="form-control" />
+                <span asp-validation-for="PCT_ASIAN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCT_BLACK" class="control-label"></label>
+                <input asp-for="PCT_BLACK" class="form-control" />
+                <span asp-validation-for="PCT_BLACK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCT_WHITE" class="control-label"></label>
+                <input asp-for="PCT_WHITE" class="form-control" />
+                <span asp-validation-for="PCT_WHITE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCT_HISPANIC" class="control-label"></label>
+                <input asp-for="PCT_HISPANIC" class="form-control" />
+                <span asp-validation-for="PCT_HISPANIC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PCT_BORN_US" class="control-label"></label>
+                <input asp-for="PCT_BORN_US" class="form-control" />
+                <span asp-validation-for="PCT_BORN_US" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="POVERTY_RATE" class="control-label"></label>
+                <input asp-for="POVERTY_RATE" class="form-control" />
+                <span asp-validation-for="POVERTY_RATE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

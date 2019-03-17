@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LuminiHire.Models.UniItem>
+
+@{
+    ViewData["Title"] = "GetUniversitiesList";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <h1 class="col-11">Universeties</h1>
+    <button class="col-1 btn btn-default" onclick="editUni()"> Add </button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr></tr>
+    </thead>
+    <tbody>
+        @foreach( var item in Model )
+        {
+        <tr class="canHover" onclick="displayUniInfo($(this), $(this).find('.Uni-info'));">
+            <td>
+                <label class="table-label" value="@item.UNITID"> @Html.DisplayFor( modelItem => item.INSTNM ) </label>
+                <div class="Uni-info" style="display: none">
+                    <h4> Student Diversity </h4>
+                    <label> Asian: @Math.Round( item.PCT_ASIAN, 2 )% </label><br />
+                    <label> Black: @Math.Round( item.PCT_BLACK, 2 )%</label><br />
+                    <label> White: @Math.Round( item.PCT_WHITE, 2 )%</label><br />
+                    <label> Hispanic: @Math.Round( item.PCT_HISPANIC, 2 )%</label><br />
+                    <label> <b>Born in the US</b>: @Math.Round( item.PCT_BORN_US, 2 )%</label><br />
+                    <label> <b>Poverty Rate</b>: @Math.Round( item.POVERTY_RATE, 2 )%</label><br />
+                    <button class="btn btn-default" onclick="editUni($(this).parent().siblings('.table-label').attr('value'))"> Edit </button>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="~/js/site.js" asp-append-version="true">
+</script>

@@ -1,0 +1,115 @@
+﻿@model LuminiHire.Models.UniItem
+
+@{
+    ViewData["Title"] = "EditUniversity";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using( Html.BeginForm( "AddEditUniversity", "UniData", FormMethod.Post ) )
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor( model => model.UNITID )
+
+            //Uni Name
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> University Name </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.INSTNM, new { htmlAttributes = new { @class = "form-control", @Placeholder = " " + @Model.INSTNM + " ", required = "required" } } )
+                        @Html.ValidationMessageFor( model => model.INSTNM, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //PCT_ASIAN
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> Asian:  @Math.Round( Model.PCT_ASIAN, 2 )% </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.PCT_ASIAN, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.PCT_ASIAN, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //PCT_BLACK
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> Black: @Math.Round( Model.PCT_BLACK, 2 )%  </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.PCT_BLACK, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.PCT_BLACK, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //PCT_WHITE
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> White: @Math.Round( Model.PCT_WHITE, 2 )% </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.PCT_WHITE, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.PCT_WHITE, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //PCT_HISPANIC
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> Hispanic: @Math.Round( Model.PCT_HISPANIC, 2 )% </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.PCT_HISPANIC, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.PCT_HISPANIC, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //PCT_BORN_US
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> Born in the US: @Math.Round( Model.PCT_BORN_US, 2 )% </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.PCT_BORN_US, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.PCT_BORN_US, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            //POVERTY_RATE
+            <div class="form-group">
+                @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+                <div class="form-group">
+                    <label class="control-label"> Poverty Rate: @Math.Round( Model.POVERTY_RATE, 2 )% </label>
+                    <div class="col-md-10">
+                        @Html.EditorFor( model => model.POVERTY_RATE, new { htmlAttributes = new { @class = "form-control pct-input", @Step = "any", @Onchange = "handlePcts(this)" } } )
+                        @Html.ValidationMessageFor( model => model.POVERTY_RATE, "", new { @class = "text-danger" } )
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        }
+
+         <button class="btn btn-danger" onclick="deleteUni($('#UNITID').attr('value'))"> Delete </button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="~/js/site.js" asp-append-version="true">
+</script>
